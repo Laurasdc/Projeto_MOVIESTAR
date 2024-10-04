@@ -7,13 +7,14 @@
   $user = new User();
   $userDao = new UserDao($conn, $BASE_URL);
 
-  $userData = $userdao->verifyToken(true);
+  $userData = $userDao->verifyToken(true);
 
   $fullName = $user->getFullName($userData);
 
-  if($userData->image = "") {
+  if($userData->image == "") {
     $userData->image = "user.png";
   }
+
 ?>
   <div id="main-container" class="container-fluid edit-profile-page">
     <div class="col-md-12">
@@ -33,12 +34,12 @@
             </div>
             <div class="form-group">
               <label for="email">E-mail:</label>
-              <input type="text" readonly class="form-control disabled" id="name" name="name" placeholder="Digite o seu nome" value="<?= $userData->email ?>">
+              <input type="text" readonly class="form-control disabled" id="email" name="email" placeholder="Digite o seu nome" value="<?= $userData->email ?>">
             </div>
             <input type="submit" class="btn card-btn" value="Alterar">
           </div>
           <div class="col-md-4">
-            <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?> ')"></div>
+            <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')"></div>
             <div class="form-group">
               <label for="image">Foto:</label>
               <input type="file" class="form-control-file" name="image">
@@ -61,7 +62,7 @@
               <input type="password" class="form-control" id="password" name="password" placeholder="Digite a sua nova senha">
             </div>
             <div class="form-group">
-              <label for="confirmpassword">Confirmação de Senha:</label>
+              <label for="confirmpassword">Confirmação de senha:</label>
               <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirme a sua nova senha">
             </div>
             <input type="submit" class="btn card-btn" value="Alterar Senha">
@@ -69,7 +70,7 @@
         </div>
       </div>
     </div>
-</div>
-  <?php
+  </div>
+<?php
   require_once("templates/footer.php");
 ?>
